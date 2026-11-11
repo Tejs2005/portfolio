@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="color-scheme" content="light">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tejas — One-Person AI Factory</title>
 <meta property="og:title" content="Tejas — One-Person AI Factory">
@@ -15,6 +16,7 @@
 <style>
   :root {
     /* LIGHT — warm paper, colourful */
+    color-scheme: light;
     --bg: #f7f3ea;
     --bg-2: #efe9dc;
     --bg-3: #e7dfcd;
@@ -33,6 +35,7 @@
     --font-body: 'Satoshi', sans-serif;
   }
   [data-theme="dark"] {
+    color-scheme: dark;
     --bg: #0b0e11;
     --bg-2: #13181d;
     --bg-3: #1a2027;
@@ -174,12 +177,15 @@
   .sec-body { margin-top: 22px; max-width: 65ch; color: var(--dim); font-size: 1.1rem; }
 
   /* ===== THE FLOOR — production line ===== */
-  .floor-grid { display: grid; grid-template-columns: 1fr 240px; gap: 40px; align-items: end; }
+  .floor-grid { display: grid; grid-template-columns: 1fr 330px; gap: 32px; align-items: end; }
   @media (max-width: 860px) { .floor-grid { grid-template-columns: 1fr; } .foreman { justify-self: start; } }
   .foreman { margin: 0; text-align: center; }
-  .duo { display: flex; gap: 8px; justify-content: center; align-items: flex-end; }
-  .mate { width: 108px; height: auto; image-rendering: pixelated; display: block;
+  .crew { display: flex; gap: 6px; justify-content: center; align-items: flex-end; flex-wrap: wrap; }
+  .mate { margin: 0; }
+  .mate img { width: 120px; height: auto; image-rendering: pixelated; display: block;
     filter: drop-shadow(5px 5px 0 rgba(23,27,31,.12)); }
+  .mate.small img { width: 84px; }
+  .mate figcaption { margin-top: 6px; font-size: .78rem; font-weight: 700; color: var(--dim); letter-spacing: .04em; text-align: center; }
   .boss-cap { margin-top: 14px; font-size: .85rem; font-weight: 700; color: var(--dim); letter-spacing: .04em; }
 
   .line-wrap { margin-top: 64px; overflow-x: clip; }
@@ -424,52 +430,15 @@
         <h2 class="sec-head rise">Everything here was built on <em>one laptop</em> with a RTX 3070 and a stubborn refusal to pay for clouds.</h2>
         <p class="sec-body rise d1">This isn't a portfolio of AI-assisted homework. It's infrastructure: a working plant where agents get registered, dispatched, reviewed, and paid in tokens.</p>
       </div>
-      <figure class="foreman rise d2" aria-label="Tejas and ZCode — the floor crew from the NOT - MUCH channel">
-        <div class="duo">
-          <svg class="mate" viewBox="0 0 64 104" role="img" aria-hidden="true">
-            <!-- TEJAS: skin head, black hair, channel tee -->
-            <rect x="20" y="10" width="24" height="22" fill="#c98e5a"/>
-            <rect x="20" y="10" width="24" height="8" fill="#171310"/>
-            <rect x="24" y="22" width="5" height="4" fill="#171b1f"/>
-            <rect x="35" y="22" width="5" height="4" fill="#171b1f"/>
-            <rect x="28" y="28" width="8" height="2" fill="#8a5a3a"/>
-            <rect x="18" y="33" width="28" height="26" fill="#ff5c1f"/>
-            <rect x="18" y="33" width="28" height="4" fill="#e04a12"/>
-            <rect x="27" y="41" width="10" height="10" fill="#ffe28a"/>
-            <rect x="10" y="33" width="8" height="22" fill="#ff5c1f"/>
-            <rect x="10" y="55" width="8" height="6" fill="#c98e5a"/>
-            <rect x="46" y="33" width="8" height="22" fill="#ff5c1f"/>
-            <rect x="46" y="55" width="8" height="6" fill="#c98e5a"/>
-            <rect x="20" y="59" width="10" height="32" fill="#2a333c"/>
-            <rect x="34" y="59" width="10" height="32" fill="#2a333c"/>
-            <rect x="19" y="91" width="12" height="7" fill="#171b1f"/>
-            <rect x="33" y="91" width="12" height="7" fill="#171b1f"/>
-          </svg>
-          <svg class="mate" viewBox="0 0 64 104" role="img" aria-hidden="true">
-            <!-- ZCODE: the machine — slate head, LED face, antenna, Z badge -->
-            <rect x="30" y="2" width="4" height="8" fill="#78818c"/>
-            <rect x="28" y="0" width="8" height="4" fill="#ff5c1f"/>
-            <rect x="20" y="10" width="24" height="22" fill="#1a2027"/>
-            <rect x="20" y="10" width="24" height="3" fill="#2a333c"/>
-            <rect x="24" y="18" width="5" height="4" fill="#57d9a3"/>
-            <rect x="35" y="18" width="5" height="4" fill="#57d9a3"/>
-            <rect x="25" y="26" width="14" height="2" fill="#57d9a3"/>
-            <rect x="18" y="33" width="28" height="26" fill="#13181d"/>
-            <rect x="18" y="33" width="28" height="4" fill="#2a333c"/>
-            <rect x="26" y="40" width="12" height="12" fill="#0b0e11"/>
-            <rect x="28" y="42" width="3" height="8" fill="#ff5c1f"/>
-            <rect x="33" y="42" width="3" height="8" fill="#57d9a3"/>
-            <rect x="10" y="33" width="8" height="22" fill="#13181d"/>
-            <rect x="10" y="55" width="8" height="6" fill="#78818c"/>
-            <rect x="46" y="33" width="8" height="22" fill="#13181d"/>
-            <rect x="46" y="55" width="8" height="6" fill="#78818c"/>
-            <rect x="20" y="59" width="10" height="32" fill="#0b0e11"/>
-            <rect x="34" y="59" width="10" height="32" fill="#0b0e11"/>
-            <rect x="19" y="91" width="12" height="7" fill="#78818c"/>
-            <rect x="33" y="91" width="12" height="7" fill="#78818c"/>
-          </svg>
+      <figure class="foreman rise d2" aria-label="The floor crew: Tejas, ZCode, opencode, hermes and qwen">
+        <div class="crew">
+          <figure class="mate"><img src="cast/tejas.png" alt="Tejas"><figcaption>tejas</figcaption></figure>
+          <figure class="mate"><img src="cast/zcode.png" alt="ZCode"><figcaption>zcode</figcaption></figure>
+          <figure class="mate small"><img src="cast/opencode.png" alt="opencode"><figcaption>opencode</figcaption></figure>
+          <figure class="mate small"><img src="cast/hermes.png" alt="hermes"><figcaption>hermes</figcaption></figure>
+          <figure class="mate small"><img src="cast/qwen.png" alt="qwen"><figcaption>qwen</figcaption></figure>
         </div>
-        <figcaption class="boss-cap">tejas &amp; zcode · running the floor together</figcaption>
+        <figcaption class="boss-cap">the originals from the channel · the crew, same style</figcaption>
       </figure>
     </div>
     <div class="line-wrap wipe">
@@ -602,7 +571,7 @@
           <h3>NOT'-'MUCH — blocky skit channel</h3>
           <p>An automated episode factory: briefs, screenplays, renders, and a CEO gate script that decides what ships. Episodes 4 through 8 rendered and approved.</p>
         </div>
-        <a class="go" href="https://www.youtube.com/@NOTMUCH" target="_blank" rel="noopener">channel ↗</a>
+        <a class="go" href="https://www.youtube.com/@not-much1416" target="_blank" rel="noopener">channel ↗</a>
       </div>
       <div class="entry rise">
         <span class="when">2026 · shipped</span>
@@ -633,7 +602,7 @@
   <span>© 2026 Tejas · built on the factory floor. Fedora 44, one RTX 3070.</span>
   <span class="links">
     <a href="https://github.com/Tejs2005">GitHub</a>
-    <a href="https://www.youtube.com/@NOTMUCH">YouTube</a>
+    <a href="https://www.youtube.com/@not-much1416">YouTube</a>
     <a href="#top">Back to top</a>
   </span>
 </footer>
@@ -995,7 +964,7 @@
     { name: 'DOST',         cap: 'chat app with a memory engine', url: null, label: 'publishing soon', a1: '#ff4f9a', a2: '#5c0f2e', dark: '#17060d' },
     { name: 'The Campus',   cap: '19 ai workers, one living town', url: null, label: 'lives local', a1: '#57d9a3', a2: '#0d3d2b', dark: '#051209' },
     { name: 'open-edits',   cap: 'clean-room video editing engine', url: null, label: 'private for now', a1: '#ff8a3d', a2: '#5c2408', dark: '#140904' },
-    { name: "NOT'-'MUCH",   cap: 'automated blocky-skit factory', url: 'https://www.youtube.com/@NOTMUCH', label: 'watch on youtube', a1: '#ff3b30', a2: '#57120e', dark: '#170504' },
+    { name: "NOT'-'MUCH",   cap: 'automated blocky-skit factory', url: 'https://www.youtube.com/@not-much1416', label: 'watch on youtube', a1: '#ff3b30', a2: '#57120e', dark: '#170504' },
   ];
   const visRoot = document.getElementById('ring');
   if (visRoot) {
