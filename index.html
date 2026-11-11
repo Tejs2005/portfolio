@@ -174,12 +174,13 @@
   .sec-body { margin-top: 22px; max-width: 65ch; color: var(--dim); font-size: 1.1rem; }
 
   /* ===== THE FLOOR — production line ===== */
-  .floor-grid { display: grid; grid-template-columns: 1fr 190px; gap: 40px; align-items: end; }
+  .floor-grid { display: grid; grid-template-columns: 1fr 240px; gap: 40px; align-items: end; }
   @media (max-width: 860px) { .floor-grid { grid-template-columns: 1fr; } .foreman { justify-self: start; } }
   .foreman { margin: 0; text-align: center; }
-  .boss { width: 150px; height: auto; image-rendering: pixelated; display: block; margin: 0 auto;
-    filter: drop-shadow(6px 6px 0 rgba(23,27,31,.12)); }
-  .boss-cap { margin-top: 12px; font-size: .85rem; font-weight: 700; color: var(--dim); letter-spacing: .04em; }
+  .duo { display: flex; gap: 8px; justify-content: center; align-items: flex-end; }
+  .mate { width: 108px; height: auto; image-rendering: pixelated; display: block;
+    filter: drop-shadow(5px 5px 0 rgba(23,27,31,.12)); }
+  .boss-cap { margin-top: 14px; font-size: .85rem; font-weight: 700; color: var(--dim); letter-spacing: .04em; }
 
   .line-wrap { margin-top: 64px; overflow-x: clip; }
   .line {
@@ -310,10 +311,10 @@
   /* ===== VISIONARIES — repos ring (dark stage in both themes) ===== */
   .vis-root {
     position: relative; height: 100svh; width: 100%; overflow: hidden;
-    background: #0b0908; user-select: none; cursor: grab;
+    background: #0b0908; user-select: none;
     --vis-ink: #f3ece0; --vis-ink-soft: rgba(243,236,224,.6);
   }
-  .vis-root:active { cursor: grabbing; }
+  .vis-med { cursor: pointer; }
   .vis-bgwrap { position: absolute; inset: 0; }
   .vis-bg { position: absolute; inset: 0; background-size: cover; background-position: 50% 50%;
     filter: brightness(.6) saturate(.95); will-change: opacity, transform; opacity: 0;
@@ -324,7 +325,7 @@
   .vis-glow { position: absolute; left: 50%; top: 55.5%; width: 42vmin; height: 42vmin;
     transform: translate(-50%,-50%); background: radial-gradient(closest-side, rgba(229,214,184,.4), transparent);
     filter: blur(44px); mix-blend-mode: screen; pointer-events: none; opacity: 0; }
-  .vis-orbit { position: absolute; inset: 0; }
+  .vis-orbit { position: absolute; inset: 0; perspective: 1400px; transform-style: preserve-3d; }
   .vis-med {
     position: absolute; left: 50%; top: 50%; width: 150px; height: 150px; border-radius: 50%;
     transform: translate(-50%,-50%); background: rgba(240,244,250,.04); cursor: pointer;
@@ -423,34 +424,52 @@
         <h2 class="sec-head rise">Everything here was built on <em>one laptop</em> with a RTX 3070 and a stubborn refusal to pay for clouds.</h2>
         <p class="sec-body rise d1">This isn't a portfolio of AI-assisted homework. It's infrastructure: a working plant where agents get registered, dispatched, reviewed, and paid in tokens.</p>
       </div>
-      <figure class="foreman rise d2" aria-label="The boss — blocky character from the NOT - MUCH channel">
-        <svg class="boss" viewBox="0 -4 64 100" role="img" aria-hidden="true">
-          <!-- head -->
-          <rect x="20" y="4" width="24" height="22" fill="#c98e5a"/>
-          <rect x="20" y="4" width="24" height="8" fill="#3a2a1a"/>
-          <rect x="24" y="16" width="5" height="4" fill="#171b1f"/>
-          <rect x="35" y="16" width="5" height="4" fill="#171b1f"/>
-          <rect x="28" y="22" width="8" height="2" fill="#8a5a3a"/>
-          <!-- torso: channel tee -->
-          <rect x="18" y="27" width="28" height="26" fill="#ff5c1f"/>
-          <rect x="18" y="27" width="28" height="4" fill="#e04a12"/>
-          <rect x="28" y="34" width="8" height="8" fill="#ffe28a"/>
-          <!-- arms -->
-          <rect x="10" y="27" width="8" height="22" fill="#ff5c1f"/>
-          <rect x="10" y="49" width="8" height="6" fill="#c98e5a"/>
-          <rect x="46" y="27" width="8" height="22" fill="#ff5c1f"/>
-          <rect x="46" y="49" width="8" height="6" fill="#c98e5a"/>
-          <!-- legs -->
-          <rect x="20" y="53" width="10" height="30" fill="#2a333c"/>
-          <rect x="34" y="53" width="10" height="30" fill="#2a333c"/>
-          <!-- boots -->
-          <rect x="19" y="84" width="12" height="7" fill="#171b1f"/>
-          <rect x="33" y="84" width="12" height="7" fill="#171b1f"/>
-          <!-- hard hat -->
-          <rect x="16" y="0" width="32" height="6" fill="#ffd23f"/>
-          <rect x="22" y="-4" width="20" height="5" fill="#ffd23f"/>
-        </svg>
-        <figcaption class="boss-cap">the boss · always on shift</figcaption>
+      <figure class="foreman rise d2" aria-label="Tejas and ZCode — the floor crew from the NOT - MUCH channel">
+        <div class="duo">
+          <svg class="mate" viewBox="0 0 64 104" role="img" aria-hidden="true">
+            <!-- TEJAS: skin head, black hair, channel tee -->
+            <rect x="20" y="10" width="24" height="22" fill="#c98e5a"/>
+            <rect x="20" y="10" width="24" height="8" fill="#171310"/>
+            <rect x="24" y="22" width="5" height="4" fill="#171b1f"/>
+            <rect x="35" y="22" width="5" height="4" fill="#171b1f"/>
+            <rect x="28" y="28" width="8" height="2" fill="#8a5a3a"/>
+            <rect x="18" y="33" width="28" height="26" fill="#ff5c1f"/>
+            <rect x="18" y="33" width="28" height="4" fill="#e04a12"/>
+            <rect x="27" y="41" width="10" height="10" fill="#ffe28a"/>
+            <rect x="10" y="33" width="8" height="22" fill="#ff5c1f"/>
+            <rect x="10" y="55" width="8" height="6" fill="#c98e5a"/>
+            <rect x="46" y="33" width="8" height="22" fill="#ff5c1f"/>
+            <rect x="46" y="55" width="8" height="6" fill="#c98e5a"/>
+            <rect x="20" y="59" width="10" height="32" fill="#2a333c"/>
+            <rect x="34" y="59" width="10" height="32" fill="#2a333c"/>
+            <rect x="19" y="91" width="12" height="7" fill="#171b1f"/>
+            <rect x="33" y="91" width="12" height="7" fill="#171b1f"/>
+          </svg>
+          <svg class="mate" viewBox="0 0 64 104" role="img" aria-hidden="true">
+            <!-- ZCODE: the machine — slate head, LED face, antenna, Z badge -->
+            <rect x="30" y="2" width="4" height="8" fill="#78818c"/>
+            <rect x="28" y="0" width="8" height="4" fill="#ff5c1f"/>
+            <rect x="20" y="10" width="24" height="22" fill="#1a2027"/>
+            <rect x="20" y="10" width="24" height="3" fill="#2a333c"/>
+            <rect x="24" y="18" width="5" height="4" fill="#57d9a3"/>
+            <rect x="35" y="18" width="5" height="4" fill="#57d9a3"/>
+            <rect x="25" y="26" width="14" height="2" fill="#57d9a3"/>
+            <rect x="18" y="33" width="28" height="26" fill="#13181d"/>
+            <rect x="18" y="33" width="28" height="4" fill="#2a333c"/>
+            <rect x="26" y="40" width="12" height="12" fill="#0b0e11"/>
+            <rect x="28" y="42" width="3" height="8" fill="#ff5c1f"/>
+            <rect x="33" y="42" width="3" height="8" fill="#57d9a3"/>
+            <rect x="10" y="33" width="8" height="22" fill="#13181d"/>
+            <rect x="10" y="55" width="8" height="6" fill="#78818c"/>
+            <rect x="46" y="33" width="8" height="22" fill="#13181d"/>
+            <rect x="46" y="55" width="8" height="6" fill="#78818c"/>
+            <rect x="20" y="59" width="10" height="32" fill="#0b0e11"/>
+            <rect x="34" y="59" width="10" height="32" fill="#0b0e11"/>
+            <rect x="19" y="91" width="12" height="7" fill="#78818c"/>
+            <rect x="33" y="91" width="12" height="7" fill="#78818c"/>
+          </svg>
+        </div>
+        <figcaption class="boss-cap">tejas &amp; zcode · running the floor together</figcaption>
       </figure>
     </div>
     <div class="line-wrap wipe">
@@ -1123,13 +1142,19 @@
         const le = entered ? 1 : smooth(Math.max(0, Math.min(1, (enterE - stg) / (1 - stg))));
         const eScale = 0.3 + 0.7 * le;
         const med = medEls[i];
-        med.style.transform = 'translate(-50%,-50%) translate(' + bx.toFixed(1) + 'px,' + (by - lift).toFixed(1) + 'px) scale(' + (s * eScale).toFixed(3) + ')';
+        const tiltY = -off * 26; // side discs rotate away in true 3D
+        med.style.transform = 'translate(-50%,-50%) translate(' + bx.toFixed(1) + 'px,' + (by - lift).toFixed(1) + 'px) rotateY(' + tiltY.toFixed(1) + 'deg) scale(' + (s * eScale).toFixed(3) + ')';
+        med.style.filter = 'drop-shadow(0 ' + (18 + topness * 14).toFixed(0) + 'px ' + (22 + topness * 20).toFixed(0) + 'px rgba(0,0,0,' + (0.35 + topness * 0.2).toFixed(2) + '))';
         med.style.opacity = le.toFixed(3);
         med.style.visibility = le < 0.02 ? 'hidden' : 'visible';
         med.style.zIndex = z;
         const face = med.querySelector('.vis-med-face');
         face.style.filter = 'grayscale(' + (Math.max(0, Math.min(0.55, (1 - topness) * 0.55))).toFixed(2) + ') brightness(' + (0.9 + 0.1 * topness).toFixed(2) + ') blur(' + ((1 - le) * 8).toFixed(1) + 'px)';
-        med.querySelector('.vis-med-rim').style.opacity = (0.42 + 0.4 * topness).toFixed(2);
+        const rim = med.querySelector('.vis-med-rim');
+        rim.style.opacity = (0.42 + 0.4 * topness).toFixed(2);
+        rim.style.boxShadow = topness > 0.6
+          ? 'inset 0 1px 2px rgba(255,255,255,.6), inset 0 0 0 1px rgba(255,143,77,' + (0.3 + 0.3 * Math.sin(now / 420)).toFixed(2) + '), 0 0 34px rgba(255,92,31,' + (0.12 + 0.1 * Math.sin(now / 420)).toFixed(2) + ')'
+          : 'inset 0 1px 2px rgba(255,255,255,.5), inset 0 0 0 1px rgba(255,255,255,.16), inset 0 -7px 16px rgba(0,0,0,.26), 0 0 0 1px rgba(0,0,0,.2)';
       }
 
       if (entered && !reduceMotion && glassVisible && !dragOn && now - lastInput > 4400 && now - lastAdvance > 3600) {
@@ -1166,22 +1191,7 @@
       rotateTo(Math.round(pos + proj));
       markInput();
     });
-    visRoot.addEventListener('wheel', (e) => {
-      e.preventDefault();
-      const now = performance.now();
-      const mag = Math.abs(e.deltaY + e.deltaX);
-      const prev = wheelLastMag; wheelLastMag = mag;
-      if (now - wheelLastTime > 140) { wheelAcc = 0; wheelLocked = false; wheelPeaked = false; }
-      wheelLastTime = now;
-      if (wheelLocked) {
-        if (mag < prev) wheelPeaked = true;
-        if (!(wheelPeaked && mag > prev + 10)) return;
-        wheelLocked = false; wheelPeaked = false; wheelAcc = 0;
-      }
-      wheelAcc += e.deltaY + e.deltaX;
-      if (Math.abs(wheelAcc) >= 88) { step(Math.sign(wheelAcc)); wheelAcc = 0; wheelLocked = true; wheelPeaked = false; }
-      markInput();
-    }, { passive: false });
+    // wheel no longer hijacked: the page scrolls normally (fix: mouse-trap complaint)
     document.getElementById('vis-left').addEventListener('click', () => { step(-1); markInput(); });
     document.getElementById('vis-right').addEventListener('click', () => { step(1); markInput(); });
     visRoot.addEventListener('keydown', (e) => {
