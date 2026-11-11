@@ -33,7 +33,7 @@ try:
 except Exception:
     f_tag = f_line = ImageFont.load_default()
 d = ImageDraw.Draw(img)
-bx0, by0, bx1, by1 = 30, 900, 760, 1070
+bx0, by0, bx1, by1 = 30, 740, 760, 910
 d.rectangle([bx0, by0, bx1, by1], fill=stage.C("FFFFFF"), outline=stage.C("1A1626"), width=6)
 d.polygon([(300, by1), (350, by1), (300, by1 + 30)], fill=stage.C("FFFFFF"))
 d.line([(300, by1), (300, by1 + 30), (350, by1)], fill=stage.C("1A1626"), width=6)

@@ -102,6 +102,7 @@
     transition: color .25s;
   }
   .bar nav a:hover { color: var(--ink-c); }
+  .bar nav a.active { color: var(--hot); }
   @media (max-width: 640px) { .bar nav { display: none; } }
 
   /* ===== HERO ===== */
@@ -177,18 +178,15 @@
   .sec-body { margin-top: 22px; max-width: 65ch; color: var(--dim); font-size: 1.1rem; }
 
   /* ===== THE FLOOR — production line ===== */
-  .floor-grid { display: grid; grid-template-columns: 1fr 330px; gap: 32px; align-items: end; }
-  @media (max-width: 860px) { .floor-grid { grid-template-columns: 1fr; } .foreman { justify-self: start; } }
-  .foreman { margin: 0; text-align: center; }
-  .crew { display: flex; gap: 6px; justify-content: center; align-items: flex-end; flex-wrap: wrap; }
+  .crew-row { margin: 44px 0 0; text-align: center; }
+  .crew { display: flex; gap: 18px; justify-content: center; align-items: flex-end; flex-wrap: wrap; }
   .mate { margin: 0; }
-  .mate img { width: 120px; height: auto; image-rendering: pixelated; display: block;
-    filter: drop-shadow(5px 5px 0 rgba(23,27,31,.12)); }
-  .mate.small img { width: 84px; }
-  .mate figcaption { margin-top: 6px; font-size: .78rem; font-weight: 700; color: var(--dim); letter-spacing: .04em; text-align: center; }
+  .mate img { width: 128px; height: 160px; image-rendering: pixelated; display: block; object-fit: contain;
+    filter: drop-shadow(4px 4px 0 rgba(23,27,31,.10)); }
+  .mate figcaption { margin-top: 8px; font-size: .8rem; font-weight: 700; color: var(--dim); letter-spacing: .04em; text-align: center; }
   .boss-cap { margin-top: 14px; font-size: .85rem; font-weight: 700; color: var(--dim); letter-spacing: .04em; }
 
-  .den-scene { margin: 44px auto 0; max-width: 760px; }
+  .den-scene { margin: 44px auto 0; max-width: 540px; }
   .den-scene img {
     width: 100%; height: auto; display: block; image-rendering: pixelated;
     border: 1px solid var(--line); border-radius: 16px;
@@ -325,7 +323,7 @@
   /* ===== VISIONARIES — repos ring (dark stage in both themes) ===== */
   .vis-root {
     position: relative; height: 100svh; width: 100%; overflow: hidden;
-    background: #0b0908; user-select: none;
+    background: #0b0908; user-select: none; touch-action: pan-y;
     --vis-ink: #f3ece0; --vis-ink-soft: rgba(243,236,224,.6);
   }
   .vis-med { cursor: pointer; }
@@ -433,12 +431,9 @@
 
 <section id="floor">
   <div class="shell">
-    <div class="floor-grid">
-      <div>
-        <h2 class="sec-head rise">Everything here was built on <em>one laptop</em> with a RTX 3070 and a stubborn refusal to pay for clouds.</h2>
-        <p class="sec-body rise d1">This isn't a portfolio of AI-assisted homework. It's infrastructure: a working plant where agents get registered, dispatched, reviewed, and paid in tokens.</p>
-      </div>
-      <figure class="foreman rise d2" aria-label="The floor crew: Tejas, ZCode, opencode, hermes and qwen">
+    <h2 class="sec-head rise">Everything here was built on <em>one laptop</em> with a RTX 3070 and a stubborn refusal to pay for clouds.</h2>
+    <p class="sec-body rise d1">This isn't a portfolio of AI-assisted homework. It's infrastructure: a working plant where agents get registered, dispatched, reviewed, and paid in tokens.</p>
+    <figure class="crew-row rise d2" aria-label="The floor crew: Tejas, ZCode, opencode, hermes and qwen">
         <div class="crew">
           <figure class="mate"><img src="cast/tejas.png" alt="Tejas"><figcaption>tejas</figcaption></figure>
           <figure class="mate"><img src="cast/zcode.png" alt="ZCode"><figcaption>zcode</figcaption></figure>
@@ -447,8 +442,7 @@
           <figure class="mate small"><img src="cast/qwen.png" alt="qwen"><figcaption>qwen</figcaption></figure>
         </div>
         <figcaption class="boss-cap">the originals from the channel · the crew, same style</figcaption>
-      </figure>
-    </div>
+    </figure>
     <figure class="den-scene rise d2">
       <img src="cast/den-scene.png" alt="Tejas and ZCode at their desks in the skit den — 'Come on. It's one toggle.'">
       <figcaption>the den, as seen in every episode · drawn by the factory, not by hand</figcaption>
@@ -524,7 +518,7 @@
 </section>
 
 
-<section class="vis-root" id="ring" aria-label="Repository ring">
+<section class="vis-root" id="ring" role="group" tabindex="0" aria-label="Repository carousel — use arrow keys to rotate">
   <div class="vis-bgwrap" aria-hidden="true"></div>
   <div class="vis-vignette" aria-hidden="true"></div>
   <div class="vis-glow" aria-hidden="true"></div>
@@ -539,7 +533,7 @@
     </defs>
   </svg>
   <div class="vis-orbit" aria-hidden="true"></div>
-  <div class="vis-title">
+  <div class="vis-title" aria-live="polite">
     <h2 class="vis-title-name" id="vis-name">AI-Factory</h2>
     <div class="vis-title-sub" id="vis-cap">the one-person ai company</div>
     <a class="vis-title-link" id="vis-link" href="https://github.com/Tejs2005/AI-Factory" target="_blank" rel="noopener">open repo ↗</a>
@@ -636,7 +630,7 @@
   const spy = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) {
       document.querySelectorAll('.bar nav a').forEach(a =>
-        a.style.color = (a.getAttribute('href') === '#' + e.target.id) ? 'var(--hot)' : '');
+        a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
     }
   }), { rootMargin: '-40% 0px -55% 0px' });
   ['floor','fleet','ring','log','hire'].forEach(id => spy.observe(document.getElementById(id)));
@@ -695,6 +689,13 @@
     mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
   }, { passive: true });
   addEventListener('pointerleave', () => { mouse.x = -9999; mouse.y = -9999; });
+
+  // shockwave coupling: a click surges the line AND paints the double ring (runs ONCE)
+  let surge = 0;
+  window._factorySurge = (cx, cy) => { surge = 1; spawnRing(cx, cy); };
+  const _spawn = spawnTask;
+  spawnTask = function() { const k = _spawn(); if (surge > 0) k.speed *= 2.2; return k; };
+  setInterval(() => { if (surge > 0) { surge = Math.max(0, surge - 0.2); } }, 100);
 
   function laneY(i) { return H * (0.22 + (i / (LANES - 1)) * 0.56); }
 
@@ -802,12 +803,6 @@
       a.flash = Math.max(0, a.flash - 0.03);
     }
 
-    // shockwave coupling: a click surges the line AND paints the double ring
-  let surge = 0;
-  window._factorySurge = (cx, cy) => { surge = 1; spawnRing(cx, cy); };
-  const _spawn = spawnTask;
-  spawnTask = function() { const k = _spawn(); if (surge > 0) k.speed *= 2.2; return k; };
-  setInterval(() => { if (surge > 0) { surge = Math.max(0, surge - 0.2); } }, 100);
   // draw trail dots (behind everything)
     for (let i = trail.length - 1; i >= 0; i--) {
       const d = trail[i]; d.age++;
@@ -838,7 +833,8 @@
 
     requestAnimationFrame(draw);
   }
-  requestAnimationFrame(draw);
+  const reduceMotionCanvas = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotionCanvas) draw(0); else requestAnimationFrame(draw);
 
   // ---------- LIQUID TYPE (spec: motionin.design "Liquid Type") ----------
   const title = document.getElementById('liquid-title');
@@ -891,7 +887,7 @@
 
     let widthsLocked = false;
     function lockWidths() {
-      if (widthsLocked) return;
+      if (widthsLocked || !chars[0] || !chars[0].ready) return;
       widthsLocked = true;
       const outers = title.querySelectorAll('.l-outer');
       outers.forEach(o => { o.style.width = ''; });
@@ -904,14 +900,14 @@
     }
 
     const liquid = { mx: -9999, my: -9999, inside: false, idleMix: 1, w: 0, h: 0,
-      ripples: [], onShock: () => window._factorySurge && window._factorySurge() };
+      ripples: [], onShock: (x, y) => window._factorySurge && window._factorySurge(x, y) };
     heroEl.addEventListener('pointermove', e => {
       const r = title.getBoundingClientRect();
       liquid.mx = e.clientX - r.left; liquid.my = e.clientY - r.top;
       liquid.inside = true;
       lockWidths();
     });
-    heroEl.addEventListener('pointerleave', () => { liquid.inside = false; });
+    heroEl.addEventListener('pointerleave', () => { liquid.inside = false; liquid.mx = -9999; liquid.my = -9999; });
     heroEl.addEventListener('click', e => {
       const r = title.getBoundingClientRect();
       liquid.ripples.push({ x: e.clientX - r.left, y: e.clientY - r.top, r: 0,
@@ -921,7 +917,12 @@
         liquid.onShock(e.clientX - cr.left, e.clientY - cr.top);
       }
     });
-    addEventListener('resize', () => { if (chars[0] && chars[0].ready) measure(); });
+    addEventListener('resize', () => {
+      if (chars[0] && chars[0].ready) { widthsLocked = false; measure(); }
+    });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => {
+      if (chars[0] && chars[0].ready) { widthsLocked = false; measure(); }
+    });
 
     (function liquidLoop(ts) {
       requestAnimationFrame(liquidLoop);
@@ -1023,8 +1024,7 @@
     let pos = 0, tweenFrom = 0, tweenTo = 0, tweenStart = 0, tweening = false;
     let entered = reduceMotion, enterStart = 0, lastInput = 0, lastAdvance = 0;
     let dragOn = false, dragX0 = 0, posAtDrag = 0, dragMoved = 0, vel = 0;
-    let wheelAcc = 0, wheelLastMag = 0, wheelLastTime = 0, wheelLocked = false, wheelPeaked = false;
-    const orbit = visRoot.querySelector('.vis-orbit');
+      const orbit = visRoot.querySelector('.vis-orbit');
     const bgwrap = visRoot.querySelector('.vis-bgwrap');
     const nameEl = document.getElementById('vis-name');
     const capEl = document.getElementById('vis-cap');
@@ -1160,11 +1160,15 @@
       pos = posAtDrag - dx / perStep();
       markInput();
     });
+    visRoot.addEventListener('pointercancel', () => {
+      dragOn = false; pos = Math.round(pos); markInput();
+    });
     visRoot.addEventListener('pointerup', (e) => {
       if (!dragOn) return;
       dragOn = false;
       if (Math.abs(dragMoved) <= 4) {
-        const med = e.target.closest('.vis-med');
+        const hit = document.elementFromPoint(e.clientX, e.clientY);
+        const med = hit && hit.closest('.vis-med');
         if (med) goTo(+med.dataset.index);
         return;
       }

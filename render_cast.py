@@ -25,7 +25,7 @@ casts = {
     "zcode": (dp.draw_zcode("happy"),),
 }
 for name, (img,) in casts.items():
-    img = img.resize((img.width * 8, img.height * 8), Image.NEAREST)
+    img = img.resize((img.width * 1, img.height * 1), Image.NEAREST)  # 1x native: page shows at 2x = crisp
     img.save(OUT / f"{name}.png")
     print("rendered", name, img.size)
 
@@ -37,7 +37,7 @@ def new_sprite(painter):
     img = Image.new("RGBA", (SPR_W, SPR_H), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
     painter(d)
-    img = img.resize((img.width * 8, img.height * 8), Image.NEAREST)
+    img = img.resize((img.width * 1, img.height * 1), Image.NEAREST)  # 1x native: page shows at 2x = crisp
     return img
 
 # palette extensions (locked family + one accent each)
