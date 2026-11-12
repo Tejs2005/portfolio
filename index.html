@@ -189,6 +189,8 @@
   }
   .sec-head em { font-style: normal; color: var(--hot); }
   .sec-body { margin-top: 22px; max-width: 65ch; color: var(--dim); font-size: 1.1rem; }
+  .sec-body a { color: var(--hot); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--hot) 45%, transparent); text-underline-offset: 3px; }
+  .sec-body a:hover { text-decoration-color: var(--hot); }
 
   /* ===== THE FLOOR — production line ===== */
   .crew-row { margin: 44px 0 0; text-align: center; }
@@ -414,7 +416,7 @@
     <a href="#fleet">The Fleet</a>
     <a href="#ring">Repos</a>
     <a href="#log">Work Log</a>
-    <a href="cv.html">CV</a>
+    <a href="#cv">CV</a>
     <a href="#hire">Hire</a>
   </nav>
   <button id="theme-toggle" aria-label="Switch theme" title="Light / dark">
@@ -601,6 +603,48 @@
         </div>
         <a class="go" href="https://github.com/Tejs2005/tejas-00" target="_blank" rel="noopener">repo ↗</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="cv">
+  <div class="shell">
+    <h2 class="sec-head rise">The <em>resume</em></h2>
+    <p class="sec-body rise d1">Right here, no download needed. The printable copy lives at <a href="cv.html">cv.html</a>.</p>
+    <div class="log">
+      <div class="entry rise">
+        <span class="when">education · in progress</span>
+        <div class="what">
+          <h3>BBA.LLB — Bachelor of Business Administration + Legislative Law</h3>
+          <p>2nd Year, 3rd Semester — Indore, Madhya Pradesh. Building the business and law base to run a one-person company, not just work for one.</p>
+        </div>
+      </div>
+      <div class="entry rise">
+        <span class="when">experience · freelance</span>
+        <div class="what">
+          <h3>Warehouse stock audits — Indore region</h3>
+          <p>Physical stock audits and goods verification: counted inventory, reconciled counts against records, filled structured audit sheets, handed verified results to the client's CA for sign-off. Accuracy, honesty, on-site discipline.</p>
+        </div>
+      </div>
+      <div class="entry rise">
+        <span class="when">certified</span>
+        <div class="what">
+          <h3>GROW Employability — Dr. Reddy's Foundation · Critical Thinking — Skillfy</h3>
+          <p>August 2025 · June 2025. Employability and structured-thinking training on top of the degree.</p>
+        </div>
+      </div>
+      <div class="entry rise">
+        <span class="when">hands-on</span>
+        <div class="what">
+          <h3>Hindi ⇄ English (native both ways) · Android repair (Odin, ADB) · audit sheets · docs</h3>
+          <p>Native-level Hindi–English translation, stock audit and inventory verification, basic Android flashing and rescue tooling, documentation and report writing. Comfortable with AI tools — this floor runs on them.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row rise d1" style="margin-top: 34px">
+      <a class="btn btn-ghost" href="cv.html">Printable CV version
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
   </div>
 </section>
