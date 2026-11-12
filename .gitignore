@@ -1,0 +1,3 @@
+snapshots/
+render_*.py
+__pycache__/
