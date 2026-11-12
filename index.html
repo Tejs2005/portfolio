@@ -116,7 +116,17 @@
   }
   .bar nav a:hover { color: var(--ink-c); }
   .bar nav a.active { color: var(--hot); }
-  @media (max-width: 640px) { .bar nav { display: none; } }
+  @media (max-width: 640px) {
+    .bar { padding-top: 12px; padding-bottom: 12px; }
+    .bar nav {
+      display: flex; gap: 12px;
+      font-size: .8rem; white-space: nowrap;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      max-width: 58vw;
+    }
+    .bar nav::-webkit-scrollbar { display: none; }
+  }
 
   /* ===== HERO ===== */
   .hero {
@@ -306,6 +316,7 @@
     color: var(--dim); font-size: .88rem;
   }
   footer .links { display: flex; gap: 22px; }
+  footer .links a { padding: 10px 0; }
   footer a { color: var(--dim); text-decoration: none; transition: color .25s; }
   footer a:hover { color: var(--hot); }
 
@@ -437,7 +448,7 @@
     </p>
     <div class="cta-row">
       <a class="btn btn-hot" href="#floor">Walk the floor
-        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
       <a class="btn btn-ghost" href="https://github.com/Tejs2005" target="_blank" rel="noopener">GitHub</a>
     </div>
@@ -643,7 +654,7 @@
     </div>
     <div class="rise d1" style="margin-top: 34px">
       <a class="btn btn-ghost" href="cv.html">Printable CV version
-        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
   </div>
@@ -654,7 +665,7 @@
     <h2 class="big rise">You could rent five SaaS tools.<br><em>Or hire the guy who builds the factory.</em></h2>
     <div class="row rise d1">
       <a class="btn btn-hot" href="mailto:tejaslowanshi@gmail.com?subject=Factory%20inquiry">Start a job
-        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8h10m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
       <a class="btn btn-ghost" href="https://github.com/Tejs2005" target="_blank" rel="noopener">See the work</a>
       <a class="btn btn-ghost" href="cv.html">Read the CV</a>
