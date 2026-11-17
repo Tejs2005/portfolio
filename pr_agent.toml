@@ -1,0 +1,13 @@
+# PR-Agent config. Docs: https://docs.pr-agent.ai/usage-guide/configuration_options.html
+# Uses Tejas's API Nex (OpenAI-compatible) endpoint — free models, one key for all tools.
+[config]
+model = "openai/free/gpt-6-luna"
+fallback_models = ["openai/free/glm-5.3"]
+response_language = "en"
+
+[pr_reviewer]
+enable_auto_approval = false
+num_max_findings = 6
+
+[pr_description]
+add_original_user_description = true

@@ -1,0 +1,25 @@
+name: PR-Agent Review
+# Free PR review via Tejas's API Nex (OpenAI-compatible endpoint).
+# Source: https://github.com/The-PR-Agent/pr-agent (community-owned, Apache)
+# Needs repo secrets: OPENAI_KEY (apinex key), GITHUB_TOKEN (PAT with repo scope)
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [master]
+jobs:
+  pr_agent_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: PR Agent action step
+        id: pragent
+        uses: The-PR-Agent/pr-agent@main
+        env:
+          OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+          OPENAI_API_BASE: "https://api.apinex.bond/v1"
+          OPENAI_BASE_URL: "https://api.apinex.bond/v1"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_REVIEWER_EXTRA_INSTRUCTIONS: "Be concise. Focus on bugs, security and clear improvements. Skip style nits."
